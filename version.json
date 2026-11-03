@@ -1,9 +1,9 @@
 {
-  "versionCode": 47,
-  "versionName": "1.1.12",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v47/Playable-v47-20261103.apk",
+  "versionCode": 48,
+  "versionName": "1.1.13",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v48/Playable-v48-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v47/Playable-v47-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v48/Playable-v48-20261103.apk"
   ],
-  "notes": "APK 加固：R8 混淆+重包类名 / 签名校验防篡改(IntegrityGuard) / 关闭 allowBackup"
+  "notes": "GitHub 备用源修复（清单域名 leeczli→lichangzhou）· STRM 引擎：mpv 路径 302 换链自动续播 + RequiredHttpHeaders 防盗链透传 + 中途断流检测"
 }
