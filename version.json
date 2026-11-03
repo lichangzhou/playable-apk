@@ -1,9 +1,9 @@
 {
-  "versionCode": 50,
-  "versionName": "1.1.15",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v50/Playable-v50-20261103.apk",
+  "versionCode": 51,
+  "versionName": "1.1.16",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v51/Playable-v51-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v50/Playable-v50-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v51/Playable-v51-20261103.apk"
   ],
-  "notes": "修复投屏：电视不再一闪而过（App 自动把302中转解析成最终直链再推给电视）；新增投屏画质选择：原画/1080p SDR/4K SDR，中转服务器自动降级并提示"
+  "notes": "修复投屏卡顿与播不出：转码画质码率对齐视频网站(1080p 8M/4K 20M)、立体声+SDR 降负载；投屏结束自动停止服务器转码，不再残留占满NAS；起播等待延长"
 }
