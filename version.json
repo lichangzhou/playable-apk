@@ -1,9 +1,9 @@
 {
-  "versionCode": 52,
-  "versionName": "1.1.17",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v52/Playable-v52-20261103.apk",
+  "versionCode": 53,
+  "versionName": "1.1.18",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v53/Playable-v53-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v52/Playable-v52-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v53/Playable-v53-20261103.apk"
   ],
-  "notes": "投屏诊断优化：失败时直接显示电视端真实状态(拒收地址/拒收指令/未起播+状态码)；片源分辨率已不高于所选档位时自动用原画不转码，秒开且不占NAS"
+  "notes": "投屏重大修复：默认改用「直通」——视频原码流直推电视硬解(4K HDR/DV画质零损失、NAS几乎不占CPU)；自动绕开302中转走直连入口；投屏弹层全展开，画质选项一目了然"
 }
