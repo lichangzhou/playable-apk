@@ -1,9 +1,9 @@
 {
-  "versionCode": 55,
-  "versionName": "1.1.20",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v55/Playable-v55-20261103.apk",
+  "versionCode": 58,
+  "versionName": "1.1.23",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v58/Playable-v58-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v55/Playable-v55-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v58/Playable-v58-20261103.apk"
   ],
-  "notes": "投屏根因修复：① CurrentURI 不再把 & 转义成 &amp;（乐播不还原实体 → FastEmby 认不出播放请求、不走 302、115 签名参数丢失回 403）；② 原画档改为推 302 入口让电视自己换链（签发UA=拉流UA）；③ 自动剥掉 /api/v1/reverse/emby 反代前缀并探测真正会 302 的地址形态（带前缀一律 404）；④ 直通/原画档补充色彩与负载说明"
+  "notes": "投屏重做：① 修局域网 IP 取错的致命 bug（旧版把 WiFi 优先级排序写反，优先取了 VPN/蜂窝 IP，电视永远连不上手机），并按「与电视同网段」优选 + 启动后自检；② 电视的 Range 请求原样透传给上游，206/Content-Range 原样回传，拖动与续播恢复可用；③ 新增 HEAD 探测，回报真实总长度与 MIME，避免 DMR 判定「不支持的源」直接拒播；④ 上游 MIME 缺失时按重定向后的最终 URL 后缀推断，不再用 octet-stream 骗电视；⑤ 代理起不来时明确报错，不再退回带 & 的原始直链（那条链进 XML 会被转义成 &amp;，电视必定拿不到参数）；⑥ 关掉投屏弹层即停掉手机上的局域网 HTTP 服务。"
 }
