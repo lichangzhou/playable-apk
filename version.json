@@ -1,6 +1,6 @@
 {
-  "versionCode": 61,
-  "versionName": "1.1.25",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v61/Playable-v61-20261104.apk",
-  "notes": "紧急回退版：把 v60 的取流改动全部撤销，代码与 v59(1.1.24) 完全一致，只抬 versionCode 到 61 以便覆盖安装。v60 删掉了取流 URL 里的 api_key 并改用请求头鉴权，导致 8097(FastEmby) 判定「不是播放请求」而回源 8096 走本地 FUSE，播放链路整体改变、全部影片 403。本版恢复 v59 原样：带 api_key 走 8097 的 302 直连，播放链路与 v59 无任何差异。投屏、画质档位文案等其他改动一并回退到 v59 状态。"
+  "versionCode": 62,
+  "versionName": "1.1.26",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v62/Playable-v62-20261104.apk",
+  "notes": "修「所有影片/剧集都播不了 + HTTP 403」：全 App 统一 UA —— 播放器 / 本地代理 / 投屏代理 / 302 探测请求全部用同一个 Playable/1.0 (Android X)。根因是 v59 起投屏代理里写死了浏览器 UA，但 OkHttp 会自动补 User-Agent: okhttp/x.y.z，配置里那个值从来没生效过：投屏先抢到直链后把链签给了 okhttp，播放器再用 Playable/1.0 去取就是 403 invalid signature（实测同一条链换 UA 取必然 403）。本次只统一 UA，播放取流链路与 v59 完全一致（地址原样请求、保留 api_key、照常走 302 中转），没有改播放地址的构造方式。 · 修投屏「第一次成功、之后全投不上」：推新片前先给电视发一次 Stop，把 AVTransport 状态归零（部分 DMR 在状态不是 STOPPED 时会直接拒绝新的 SetAVTransportURI，表现就是第一次成功、之后连试回同一部也不行）；关闭投屏弹层时同步停掉电视上的会话。 · 投屏起流失败时把服务端返回的真实错误透出来（例如服务端转码进程起不来），不再只丢一句「电视未开始播放」。 · 画质档位文案说清每一档实际发生了什么：直通=只把音频转成 AAC、换成电视能读的封装，画面一帧不重编；原画=原盘字节直送、零转码零延迟，但音轨和杜比视界要电视自己解得动；1080p·8M / 4K·20M=服务端实时重编码成 SDR，NAS CPU 占用最高。 · 剧集（Series）封面页不再显示投屏按钮——投屏要在具体单集页发起，封面页点了必然失败。"
 }
