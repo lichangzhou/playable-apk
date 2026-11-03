@@ -1,9 +1,9 @@
 {
-  "versionCode": 48,
-  "versionName": "1.1.13",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v48/Playable-v48-20261103.apk",
+  "versionCode": 49,
+  "versionName": "1.1.14",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v49/Playable-v49-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v48/Playable-v48-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v49/Playable-v49-20261103.apk"
   ],
-  "notes": "GitHub 备用源修复（清单域名 leeczli→lichangzhou）· STRM 引擎：mpv 路径 302 换链自动续播 + RequiredHttpHeaders 防盗链透传 + 中途断流检测"
+  "notes": "新增DLNA投屏：自动发现局域网电视/盒子（支持乐播、电视原生渲染端等），播放页一键推送并同步进度；字幕异步预取，进片更快挂上字幕"
 }
