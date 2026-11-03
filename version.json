@@ -1,9 +1,9 @@
 {
-  "versionCode": 58,
-  "versionName": "1.1.23",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v58/Playable-v58-20261103.apk",
+  "versionCode": 59,
+  "versionName": "1.1.24",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v59/Playable-v59-20261104.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v58/Playable-v58-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v59/Playable-v59-20261104.apk"
   ],
-  "notes": "投屏重做：① 修局域网 IP 取错的致命 bug（旧版把 WiFi 优先级排序写反，优先取了 VPN/蜂窝 IP，电视永远连不上手机），并按「与电视同网段」优选 + 启动后自检；② 电视的 Range 请求原样透传给上游，206/Content-Range 原样回传，拖动与续播恢复可用；③ 新增 HEAD 探测，回报真实总长度与 MIME，避免 DMR 判定「不支持的源」直接拒播；④ 上游 MIME 缺失时按重定向后的最终 URL 后缀推断，不再用 octet-stream 骗电视；⑤ 代理起不来时明确报错，不再退回带 & 的原始直链（那条链进 XML 会被转义成 &amp;，电视必定拿不到参数）；⑥ 关掉投屏弹层即停掉手机上的局域网 HTTP 服务。"
+  "notes": "投屏重做 + 三源冗余修复。投屏：① 修局域网 IP 取错的致命 bug（旧版把 WiFi 优先级排序写反，优先取了 VPN/蜂窝 IP，电视永远连不上手机），并按「与电视同网段」优选 + 启动后自检；② 电视的 Range 请求原样透传给上游，206/Content-Range 原样回传，拖动与续播恢复可用；③ 新增 HEAD 探测，回报真实总长度与 MIME，避免 DMR 判定「不支持的源」直接拒播；④ 上游 MIME 缺失时按重定向后的最终 URL 后缀推断，不再用 octet-stream 骗电视；⑤ 代理起不来时明确报错，不再退回带 & 的原始直链（那条链进 XML 会被转义成 &amp;，电视必定拿不到参数）；⑥ 关掉投屏弹层即停掉手机上的局域网 HTTP 服务。更新：三源清单改为并行全取、取 versionCode 最大的那个（jsDelivr 对 @main 分支缓存 12 小时，陈旧清单不再挡住 GitHub raw），并把各源的 APK 地址互相并入备选，主源下架时仍有通道。"
 }
