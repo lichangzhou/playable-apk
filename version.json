@@ -1,9 +1,9 @@
 {
-  "versionCode": 51,
-  "versionName": "1.1.16",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v51/Playable-v51-20261103.apk",
+  "versionCode": 52,
+  "versionName": "1.1.17",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v52/Playable-v52-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v51/Playable-v51-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v52/Playable-v52-20261103.apk"
   ],
-  "notes": "修复投屏卡顿与播不出：转码画质码率对齐视频网站(1080p 8M/4K 20M)、立体声+SDR 降负载；投屏结束自动停止服务器转码，不再残留占满NAS；起播等待延长"
+  "notes": "投屏诊断优化：失败时直接显示电视端真实状态(拒收地址/拒收指令/未起播+状态码)；片源分辨率已不高于所选档位时自动用原画不转码，秒开且不占NAS"
 }
