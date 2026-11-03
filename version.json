@@ -1,9 +1,6 @@
 {
-  "versionCode": 59,
-  "versionName": "1.1.24",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v59/Playable-v59-20261104.apk",
-  "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v59/Playable-v59-20261104.apk"
-  ],
-  "notes": "投屏重做 + 三源冗余修复。投屏：① 修局域网 IP 取错的致命 bug（旧版把 WiFi 优先级排序写反，优先取了 VPN/蜂窝 IP，电视永远连不上手机），并按「与电视同网段」优选 + 启动后自检；② 电视的 Range 请求原样透传给上游，206/Content-Range 原样回传，拖动与续播恢复可用；③ 新增 HEAD 探测，回报真实总长度与 MIME，避免 DMR 判定「不支持的源」直接拒播；④ 上游 MIME 缺失时按重定向后的最终 URL 后缀推断，不再用 octet-stream 骗电视；⑤ 代理起不来时明确报错，不再退回带 & 的原始直链（那条链进 XML 会被转义成 &amp;，电视必定拿不到参数）；⑥ 关掉投屏弹层即停掉手机上的局域网 HTTP 服务。更新：三源清单改为并行全取、取 versionCode 最大的那个（jsDelivr 对 @main 分支缓存 12 小时，陈旧清单不再挡住 GitHub raw），并把各源的 APK 地址互相并入备选，主源下架时仍有通道。"
+  "versionCode": 60,
+  "versionName": "1.1.25",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v60/Playable-v60-20261104.apk",
+  "notes": "修四个问题。①播放 403（最高优先级）：根因是取流 URL 里带了 api_key —— 8097（FastEmby 代理）会把这种请求无视转码参数直接 302 到 115 网盘 CDN，而 115 直链的 k 签名绑定签发时的 UA（FastEmby 写死 curl/8.7.1），客户端换任何 UA 跟过去都是 403 invalid signature，正是你看到的「HTTP 403 播放失败」。现在取流 URL 一律不带 api_key，改用 X-Emby-Token + Authorization 请求头认证，实测 8096 原版 Emby 与 8097 代理都直接 206 出片、Range 完整；另加一道兜底：真撞上 403 invalid signature 时自动换 curl UA 重试。②投屏「第一次成功后全失败」：投屏前先给电视发 Stop 把上一次会话归零（乐播在 AVTransport 非 STOPPED 时会拒绝新的 SetAVTransportURI），关弹层时也先停电视；代理停止时不再清空会话（电视正在拉流时 token 被删会卡在播放中）；投屏 UA 从 Chrome UA 改成 curl/8.7.1 —— 旧值其实根本没生效，OkHttp 会用自己的 okhttp/x.y.z 把它顶掉，一旦链路上出现 302 就必 403。③画质档位语义写清楚：直通＝服务端只把音频转成 AAC、换成 TS 封装，画面一帧不重编；原画＝原盘字节直给电视，零转码零负载，但电视得自己解得动 TrueHD/DTS/杜比视界；1080p/4K＝服务端真重编码 H.264/AAC/SDR，CPU 占用最高。④剧集封面页不再显示投屏按钮（剧集条目本身没有媒体源，点了必然失败），投屏入口保留在单集详情页。"
 }
