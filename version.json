@@ -1,9 +1,9 @@
 {
-  "versionCode": 53,
-  "versionName": "1.1.18",
-  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v53/Playable-v53-20261103.apk",
+  "versionCode": 54,
+  "versionName": "1.1.19",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v54/Playable-v54-20261103.apk",
   "apkMirrors": [
-    "https://github.com/lichangzhou/playable-apk/releases/download/v53/Playable-v53-20261103.apk"
+    "https://github.com/lichangzhou/playable-apk/releases/download/v54/Playable-v54-20261103.apk"
   ],
-  "notes": "投屏重大修复：默认改用「直通」——视频原码流直推电视硬解(4K HDR/DV画质零损失、NAS几乎不占CPU)；自动绕开302中转走直连入口；投屏弹层全展开，画质选项一目了然"
+  "notes": "投屏根因修复：CurrentURI 不再把 & 转义成 &amp;（乐播不还原实体，导致 FastEmby 认不出播放请求、不走 302、115 签名参数丢失回 403）；原画档改为把 302 入口地址直接推给电视，由电视自己换链（签发UA=拉流UA）；直通/原画档补充色彩与负载说明"
 }
