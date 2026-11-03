@@ -1,0 +1,9 @@
+{
+  "versionCode": 47,
+  "versionName": "1.1.12",
+  "apk": "https://gitee.com/leeczli/playable-apk/releases/download/v47/Playable-v47-20261103.apk",
+  "apkMirrors": [
+    "https://github.com/lichangzhou/playable-apk/releases/download/v47/Playable-v47-20261103.apk"
+  ],
+  "notes": "APK 加固：R8 混淆+重包类名 / 签名校验防篡改(IntegrityGuard) / 关闭 allowBackup"
+}
