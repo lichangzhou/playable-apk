@@ -1,6 +1,6 @@
 {
-  "versionCode": 62,
-  "versionName": "1.1.26",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v62/Playable-v62-20261104.apk",
-  "notes": "修「所有影片/剧集都播不了 + HTTP 403」：全 App 统一 UA —— 播放器 / 本地代理 / 投屏代理 / 302 探测请求全部用同一个 Playable/1.0 (Android X)。根因是 v59 起投屏代理里写死了浏览器 UA，但 OkHttp 会自动补 User-Agent: okhttp/x.y.z，配置里那个值从来没生效过：投屏先抢到直链后把链签给了 okhttp，播放器再用 Playable/1.0 去取就是 403 invalid signature（实测同一条链换 UA 取必然 403）。本次只统一 UA，播放取流链路与 v59 完全一致（地址原样请求、保留 api_key、照常走 302 中转），没有改播放地址的构造方式。 · 修投屏「第一次成功、之后全投不上」：推新片前先给电视发一次 Stop，把 AVTransport 状态归零（部分 DMR 在状态不是 STOPPED 时会直接拒绝新的 SetAVTransportURI，表现就是第一次成功、之后连试回同一部也不行）；关闭投屏弹层时同步停掉电视上的会话。 · 投屏起流失败时把服务端返回的真实错误透出来（例如服务端转码进程起不来），不再只丢一句「电视未开始播放」。 · 画质档位文案说清每一档实际发生了什么：直通=只把音频转成 AAC、换成电视能读的封装，画面一帧不重编；原画=原盘字节直送、零转码零延迟，但音轨和杜比视界要电视自己解得动；1080p·8M / 4K·20M=服务端实时重编码成 SDR，NAS CPU 占用最高。 · 剧集（Series）封面页不再显示投屏按钮——投屏要在具体单集页发起，封面页点了必然失败。"
+  "versionCode": 64,
+  "versionName": "1.1.28",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v64/Playable-v64-20261104.apk",
+  "notes": "v64（1.1.28）两个解码内核功能完全统一 + 续播位修复\n· Media3 与 libmpv 两套内核现共用同一套播放器界面与全部功能，切换内核不再有功能差异\n· 修复「小窗 → 回全屏」黑屏、被暂停、进度倒退（libmpv 内核）\n· 修复续播位不更新：Emby 进度上报缺 PlaySessionId 一直被服务器拒绝（HTTP 400），现已真正落库\n· 修复续播位置被服务器旧值覆盖导致倒退（多来源取最新）\n· 修复 libmpv 硬解参数非法导致 4K DV 长时间黑屏\n· 画中画：两个内核统一为系统画中画\n· 投屏：修复代理自检误判，新增请求特征 / 实际传输量 / 电视状态时序日志，便于定位投屏问题"
 }
