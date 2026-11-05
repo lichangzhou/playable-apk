@@ -1,6 +1,6 @@
 {
-  "versionCode": 64,
-  "versionName": "1.1.28",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v64/Playable-v64-20261104.apk",
-  "notes": "v64（1.1.28）两个解码内核功能完全统一 + 续播位修复\n· Media3 与 libmpv 两套内核现共用同一套播放器界面与全部功能，切换内核不再有功能差异\n· 修复「小窗 → 回全屏」黑屏、被暂停、进度倒退（libmpv 内核）\n· 修复续播位不更新：Emby 进度上报缺 PlaySessionId 一直被服务器拒绝（HTTP 400），现已真正落库\n· 修复续播位置被服务器旧值覆盖导致倒退（多来源取最新）\n· 修复 libmpv 硬解参数非法导致 4K DV 长时间黑屏\n· 画中画：两个内核统一为系统画中画\n· 投屏：修复代理自检误判，新增请求特征 / 实际传输量 / 电视状态时序日志，便于定位投屏问题"
+  "versionCode": 66,
+  "versionName": "1.1.30",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v66/Playable-v66-20261105.apk",
+  "notes": "v66（1.1.30）投屏三件套根治：起播 40秒→1.1秒、拖动不跳→0.76秒精确命中、进度条对齐\n· 末尾回扫探针改回真实 TS 字节（原来用 0 填充 → 电视解不出 TS → 一直扫到片尾，起播要 40 秒）\n· 探针只回应不换流：DMR 的元数据探测不再被误判成用户拖动（原来每来一个探针就掐断正在供流的流 → 电视不停重连 → 永远卡 TRANSITIONING）\n· 字节空间兜底：音轨码率缺失时用「文件大小×8÷时长」推容器码率，并丢弃 Emby 拿容器均值顶替的垃圾音轨码率（曾把 25.4Mbps 全算成音频，声明总长从 23.5GB 缩成 179MB）\n· 位置优先用电视上报的 RelTime，回落代理墙钟；App 侧 absPos 同时认「绝对式 / 相对式」两种 RelTime\n· 引入 DLNA 时间型 seek（TimeSeekRange.dlna.org / X-AvailableSeekRange，与 Jellyfin、readymedia 一致）\n· 流型上游改「后台起流 + 响应头立即下发」（Emby 起一条 -ss 的新流要 11~14 秒，同步 execute() 会把响应头一起拖住 → 电视 4.5 秒就放弃）\n· 换流时旧流活到新上游就绪才停，避免电视两头断供\n· 默认画质档改回原画：实测起播 1.1 秒、末尾扫描 0 次、拖动 0.76 秒精确命中（根因是只有真实文件才有真实字节空间，电视才能把时间 seek 映射成字节 seek）；原盘音轨电视解不动时（TrueHD/DTS/FLAC/PCM、AV1、10bit）自动降级直通"
 }
