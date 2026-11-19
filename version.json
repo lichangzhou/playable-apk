@@ -1,6 +1,6 @@
 {
-  "versionCode": 66,
-  "versionName": "1.1.30",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v66/Playable-v66-20261105.apk",
-  "notes": "v66（1.1.30）投屏三件套根治：起播 40秒→1.1秒、拖动不跳→0.76秒精确命中、进度条对齐\n· 末尾回扫探针改回真实 TS 字节（原来用 0 填充 → 电视解不出 TS → 一直扫到片尾，起播要 40 秒）\n· 探针只回应不换流：DMR 的元数据探测不再被误判成用户拖动（原来每来一个探针就掐断正在供流的流 → 电视不停重连 → 永远卡 TRANSITIONING）\n· 字节空间兜底：音轨码率缺失时用「文件大小×8÷时长」推容器码率，并丢弃 Emby 拿容器均值顶替的垃圾音轨码率（曾把 25.4Mbps 全算成音频，声明总长从 23.5GB 缩成 179MB）\n· 位置优先用电视上报的 RelTime，回落代理墙钟；App 侧 absPos 同时认「绝对式 / 相对式」两种 RelTime\n· 引入 DLNA 时间型 seek（TimeSeekRange.dlna.org / X-AvailableSeekRange，与 Jellyfin、readymedia 一致）\n· 流型上游改「后台起流 + 响应头立即下发」（Emby 起一条 -ss 的新流要 11~14 秒，同步 execute() 会把响应头一起拖住 → 电视 4.5 秒就放弃）\n· 换流时旧流活到新上游就绪才停，避免电视两头断供\n· 默认画质档改回原画：实测起播 1.1 秒、末尾扫描 0 次、拖动 0.76 秒精确命中（根因是只有真实文件才有真实字节空间，电视才能把时间 seek 映射成字节 seek）；原盘音轨电视解不动时（TrueHD/DTS/FLAC/PCM、AV1、10bit）自动降级直通"
+  "versionCode": 69,
+  "versionName": "1.1.33",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v69/Playable-v69-20261119-arm.apk",
+  "notes": "v69（1.1.33）收费系统对接修复 · · 修复在线购买：下单与支付上报从表单编码改为 JSON 请求体（服务端 license-verify v2 只收 JSON，表单必 400「请求体不是有效 JSON」，此前创建订单/上报支付必失败） · · 激活码校验与订单查询接口此前即正常，无需变更 · · 本版本起 APK 按 ABI 分包：arm（arm64+armv7，手机/平板/电视通用）/ x86_64（模拟器）/ x86（老旧 x86 设备），绝大多数设备请下载 arm 版 · · 自 v66 以来的内核与功能更新随包附带：主时钟重构（倍速音画同步）、倍速闪退修复、音频断音根治、Live 直播二期（EPG 节目单）、ABI 拆分瘦身等"
 }
