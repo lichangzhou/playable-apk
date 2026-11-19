@@ -1,6 +1,6 @@
 {
-  "versionCode": 69,
-  "versionName": "1.1.33",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v69/Playable-v69-20261119-arm.apk",
-  "notes": "v69（1.1.33）收费系统对接修复 · · 修复在线购买：下单与支付上报从表单编码改为 JSON 请求体（服务端 license-verify v2 只收 JSON，表单必 400「请求体不是有效 JSON」，此前创建订单/上报支付必失败） · · 激活码校验与订单查询接口此前即正常，无需变更 · · 本版本起 APK 按 ABI 分包：arm（arm64+armv7，手机/平板/电视通用）/ x86_64（模拟器）/ x86（老旧 x86 设备），绝大多数设备请下载 arm 版 · · 自 v66 以来的内核与功能更新随包附带：主时钟重构（倍速音画同步）、倍速闪退修复、音频断音根治、Live 直播二期（EPG 节目单）、ABI 拆分瘦身等"
+  "versionCode": 70,
+  "versionName": "1.1.34",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v70/Playable-v70-20261119-arm.apk",
+  "notes": "TV 遥控适配：播放器新增遥控按键通道（OK键播放/暂停，左右键快退10s/快进30s带OSD，上下键开关控制条，媒体播放/暂停键直连） | 控制条出现时焦点自动落返回键，遥控器方向键可在控制条按钮间移动 | Live/媒体库/设置等主界面遥控焦点导航此前已就绪，TV 桌面入口已内置 | 含 v30 收费系统全部修复与 v29 Live EPG 节目单"
 }
