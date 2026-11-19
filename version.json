@@ -1,6 +1,6 @@
 {
-  "versionCode": 70,
-  "versionName": "1.1.34",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v70/Playable-v70-20261119-arm.apk",
-  "notes": "TV 遥控适配：播放器新增遥控按键通道（OK键播放/暂停，左右键快退10s/快进30s带OSD，上下键开关控制条，媒体播放/暂停键直连） | 控制条出现时焦点自动落返回键，遥控器方向键可在控制条按钮间移动 | Live/媒体库/设置等主界面遥控焦点导航此前已就绪，TV 桌面入口已内置 | 含 v30 收费系统全部修复与 v29 Live EPG 节目单"
+  "versionCode": 71,
+  "versionName": "1.1.35",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v71/Playable-v71-20261120.apk",
+  "notes": "Music 二期 DSP：内核音频管线注入参数 EQ + 峰值 limiter\n· RBJ Audio EQ Cookbook biquad（peaking/low-shelf/high-shelf），DF2T 二阶直通转置级联，Float32 管线\n· 全声道联动峰值 limiter，攻击快/释放慢一阶平滑，作用于所有声道\n· 注入点：音量/静音之后、AAudio 写出之前，仅 PCM 路径生效（IEC61937 直通不经过）\n· 新增 set_option \"dsp\" JSON 配置通道，配置持久化于 pn_player_t，open/换速后自动重下发\n· seek flush 重置 DSP 状态防咔哒声\n· 新增 PlayNativePlayerActivity dsp extra 配置下发入口\n· 四 ABI 内核重编，指纹与权威基线逐项一致"
 }
