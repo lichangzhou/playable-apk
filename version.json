@@ -1,6 +1,6 @@
 {
-  "versionCode": 75,
-  "versionName": "1.1.39",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v75/Playable-v75-20261120.apk",
-  "notes": "Music 板块连续升级（v33→v36，纯 Kotlin，内核沿用 v32 DSP 指纹）\n· v33：接入 Emby/Jellyfin 音乐库自动发现（独立 EmbyMusicSource，网络流直链播放）；新增 SAF 指定本地文件夹与自动发现开关；网络/SAF 曲目经本地代理交内核播放\n· v34：Emby 曲目分页拉取（每页 500，去掉写死上限），实测拉全 38301 首；队列改存曲目快照 + 重扫后自愈，修复队列整屏「(缺失)」\n· v35：音乐 UI 三页重做——全屏歌词页（点 mini 封面进入，大字逐行歌词、当前行高亮、完整播控）、歌手列表（头像+歌曲/专辑数+搜索）、歌手详情（大图+播放全部+专辑网格）\n· v36：数据源自主化——不依赖服务器标签，从曲目路径解析歌手/专辑（歌手从 103 位→862 位真实歌手）；歌词在线匹配升级 QQ 音乐主力源（LRCLIB→QQ音乐→网易云兜底，粤语歌实测命中 52 行）；歌手头像自动从 QQ 音乐专辑封面抓取并本地缓存\n· 修复：启动恢复曲目不触发歌词解析、网络封面加载、网易云接口限流节流"
+  "versionCode": 87,
+  "versionName": "1.1.51",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v87/Playable-v87-20261121.apk",
+  "notes": "v43（versionCode 87 / 1.1.51）\n\n【v42 内核：go-gate 起播修正】\n· 修复 IPTV 播放音画不同步的起播 0.3s 偏差：移除 audio.c PCM 路径的 300ms fifo 水位兜底，起播门控兜底只保留 2s 墙钟，阈值本身不再形成起始偏差\n· 真机验证：媒体库视频与 IPTV Live 频道均 CLOSE → OPEN by player（held 33ms/47ms），auto 兜底放行计数 0，drift ±92ms\n\n【v43 Music：DSP 音效设置】\n· 新增「音效设置」面板：10 段 EQ（31.25~16000Hz，低架/峰型/高架）+ 7 预设（平直/低音增强/人声/摇滚/古典/爵士/电影）+ 峰值限幅阈值\n· 配置 DataStore 持久化，播放时经 set_option dsp 通道下发内核，内核返回 0 成功\n· 修复：选预设/手动调频段时未打开总开关 enable（内核会忽略 EQ），现顺带 enable=1\n\n【本次 OTA 一并包含的历史版本（v33~v41）】\n· Music 数据源自主：目录路径解析歌手/专辑（歌手从 103 位→862 位真实歌手）、QQ 音乐歌词+自动头像、网易云串行节流兜底\n· Music 曲库 JSONL 流式缓存：修复 38301 首曲库 OOM（缓存 26.78MB，冷启动秒开）\n· Music TV 遥控焦点链补齐：页签/列表/歌手/专辑/mini 播控全部接入 TV 焦点体系\n· Music UI：全屏歌词页、歌手列表/详情页、队列快照自愈、Emby 分页流式拉取\n· Live 页 TV 走查无回归，底层主时钟同步链路持续收敛"
 }
