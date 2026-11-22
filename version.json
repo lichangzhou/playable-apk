@@ -1,6 +1,6 @@
 {
-  "versionCode": 87,
-  "versionName": "1.1.51",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v87/Playable-v87-20261121.apk",
-  "notes": "v43（versionCode 87 / 1.1.51）\n\n【v42 内核：go-gate 起播修正】\n· 修复 IPTV 播放音画不同步的起播 0.3s 偏差：移除 audio.c PCM 路径的 300ms fifo 水位兜底，起播门控兜底只保留 2s 墙钟，阈值本身不再形成起始偏差\n· 真机验证：媒体库视频与 IPTV Live 频道均 CLOSE → OPEN by player（held 33ms/47ms），auto 兜底放行计数 0，drift ±92ms\n\n【v43 Music：DSP 音效设置】\n· 新增「音效设置」面板：10 段 EQ（31.25~16000Hz，低架/峰型/高架）+ 7 预设（平直/低音增强/人声/摇滚/古典/爵士/电影）+ 峰值限幅阈值\n· 配置 DataStore 持久化，播放时经 set_option dsp 通道下发内核，内核返回 0 成功\n· 修复：选预设/手动调频段时未打开总开关 enable（内核会忽略 EQ），现顺带 enable=1\n\n【本次 OTA 一并包含的历史版本（v33~v41）】\n· Music 数据源自主：目录路径解析歌手/专辑（歌手从 103 位→862 位真实歌手）、QQ 音乐歌词+自动头像、网易云串行节流兜底\n· Music 曲库 JSONL 流式缓存：修复 38301 首曲库 OOM（缓存 26.78MB，冷启动秒开）\n· Music TV 遥控焦点链补齐：页签/列表/歌手/专辑/mini 播控全部接入 TV 焦点体系\n· Music UI：全屏歌词页、歌手列表/详情页、队列快照自愈、Emby 分页流式拉取\n· Live 页 TV 走查无回归，底层主时钟同步链路持续收敛"
+  "versionCode": 88,
+  "versionName": "1.1.52",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v88/Playable-v88-20261122.apk",
+  "notes": "v44（1.1.52）十项高严重度 BUG 全量修复\n\n1. 换链续播 seek 被 media_opened 覆盖：加 resumeSeekSuppressed 闸，换链后 media_opened 不再用 resumeMs 覆盖换链 seek\n2. 音频「默认」按钮空操作：disableTrack 补 AUDIO 分支，走 selectTrack(0) 恢复默认音轨\n3. XtreamClient 解码必然失败：显式 Json{ignoreUnknownKeys=true}，兼容真实响应未知字段\n4. displayKey 重复触发 LazyColumn 崩溃：M3U/Xtream 频道 id 兜底非空 + 去重后缀，彻底消除键冲突\n5. TV 左方向键死区：预览放行 + 派发兜底，左键可滚动内容行、行到左缘时唤抽屉，左右不冲突\n6. 人物覆盖层不接管返回键：return 前挂 BackHandler，BACK 收起覆盖层而非退出详情页\n7. rescan 无防重入：CAS 单飞闸 + doRescan 拆分，杜绝协程交错与缓存并发写损坏\n8. 歌词取消竞态覆盖：重抛 CancellationException + lyricsJob 比对，切曲后旧协程不再覆盖新曲歌词\n9. TMDB API Key 硬编码：移至 BuildConfig 注入，密钥不入源码、可经 Gradle 属性覆盖\n10. 测试 NAS 凭据硬编码：删除 TestSources 对象与「填入测试源」按钮\n\n签名：Playable 正式证书（CN=Playable，与 v38 一致，可 OTA 覆盖不丢数据）\n真机验证：Y700 实测通过"
 }
