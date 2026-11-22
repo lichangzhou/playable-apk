@@ -1,6 +1,6 @@
 {
-  "versionCode": 88,
-  "versionName": "1.1.52",
-  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v88/Playable-v88-20261122.apk",
-  "notes": "v44（1.1.52）十项高严重度 BUG 全量修复\n\n1. 换链续播 seek 被 media_opened 覆盖：加 resumeSeekSuppressed 闸，换链后 media_opened 不再用 resumeMs 覆盖换链 seek\n2. 音频「默认」按钮空操作：disableTrack 补 AUDIO 分支，走 selectTrack(0) 恢复默认音轨\n3. XtreamClient 解码必然失败：显式 Json{ignoreUnknownKeys=true}，兼容真实响应未知字段\n4. displayKey 重复触发 LazyColumn 崩溃：M3U/Xtream 频道 id 兜底非空 + 去重后缀，彻底消除键冲突\n5. TV 左方向键死区：预览放行 + 派发兜底，左键可滚动内容行、行到左缘时唤抽屉，左右不冲突\n6. 人物覆盖层不接管返回键：return 前挂 BackHandler，BACK 收起覆盖层而非退出详情页\n7. rescan 无防重入：CAS 单飞闸 + doRescan 拆分，杜绝协程交错与缓存并发写损坏\n8. 歌词取消竞态覆盖：重抛 CancellationException + lyricsJob 比对，切曲后旧协程不再覆盖新曲歌词\n9. TMDB API Key 硬编码：移至 BuildConfig 注入，密钥不入源码、可经 Gradle 属性覆盖\n10. 测试 NAS 凭据硬编码：删除 TestSources 对象与「填入测试源」按钮\n\n签名：Playable 正式证书（CN=Playable，与 v38 一致，可 OTA 覆盖不丢数据）\n真机验证：Y700 实测通过"
+  "versionCode": 91,
+  "versionName": "1.1.55",
+  "apk": "https://github.com/lichangzhou/playable-apk/releases/download/v91/Playable-v91-20261122.apk",
+  "notes": "v47（1.1.55）激活失败彻底修复 + 收费系统对齐\n\n【核心修复：激活码输入法全角问题（真机复现并验证）】\n· 根因：搜狗/百度等手机输入法把激活码里的 '-' 自动打成全角「－」（U+FF0D），\n  App 原样上送服务端，服务端查不到该码，返回「许可证不存在」，界面却统一提示\n  「激活码无效、已过期或已被使用」，看起来像码有问题，实际是字符被换了。\n· 修复：激活码统一归一化后再上送——各类横线（－ − — – ‐）与全角字符转半角、\n  去空格、转大写。真机验证：输入框显示全角「PLB－1112－02F9－1B97」，\n  服务端实际收到「PLB-1112-02F9-1B97」，激活成功。\n· 失败提示分类：网络不通显示「网络连接失败，请检查网络后重试」，\n  码本身无效才显示服务端返回的原因，不再把所有失败都说成「激活码无效」。\n\n【收费系统对齐（v45 起，此前未发布）】\n· 授权地址从旧 VPS 切到新 VPS（47.95.29.81:9090），并对已装用户持久化的旧地址\n  自动归一化，老用户不用手动改。\n· 激活/下单请求补上 app=playable（服务端已升级多应用版，不带 app 会报\n  「激活码与当前应用不匹配」/「应用不存在」）。\n· 购买页套餐收敛为「免费版 / 专业版 ¥68」单档，去掉 ¥39/¥99/¥299 三档旧套餐。\n· 服务端按应用区分定价：Playable 专业版 ¥68、EvoLink 专业版 ¥68、\n  Docker-Link 高级版 ¥68 / 专业版 ¥98。\n\n【稳定性】\n· 输入框不再做实时字符变换（实时改文本会打断输入法组合状态、吞字符），\n  归一化只在上送前做，输入体验与原来一致。\n\n签名仍为 Playable 正式证书（SHA-256 fed595e7…），可覆盖安装，不丢数据。"
 }
