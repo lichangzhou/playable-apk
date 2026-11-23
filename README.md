@@ -29,6 +29,13 @@ APK 使用正式证书签名（SHA-256 `fed595e7…`），**可覆盖安装，�
 | 播放功能 BUG、崩溃 | [Playable 仓库提 issue](https://github.com/lichangzhou/Playable/issues/new?template=bug_report.yml) |
 | 使用问题、怎么配置 | [Playable 讨论区](https://github.com/lichangzhou/Playable/discussions) |
 
+如果 issue / 讨论区不好用，也可以直接找我：
+
+| 渠道 | 联系方式 |
+|---|---|
+| 邮箱 | `1543079796@qq.com` |
+| QQ | `1543079796` |
+
 ⚠️ **不要在 issue 里贴激活码、设备指纹或服务器地址**，请先脱敏。
 
 ## 版本记录
